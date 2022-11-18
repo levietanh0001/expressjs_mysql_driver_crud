@@ -6,7 +6,7 @@ require("dotenv").config()
 const mysql = require("mysql")
 
 var path = require('path')
-const env_path = path.join(__dirname, '/../.env')
+const env_path = path.join(__dirname, '../.env')
 
 
 const app = express();
