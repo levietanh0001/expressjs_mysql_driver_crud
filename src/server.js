@@ -1,3 +1,5 @@
+// https://javascript.plainenglish.io/build-a-mysql-node-js-crud-app-2-mysql-integration-7f3c337a21d1
+
 const express = require("express")
 const cors = require('cors')
 require("dotenv").config()
@@ -56,6 +58,19 @@ app.put("/test-table", (req, res) => {
         }
     });
 });
+app.delete("/test-table", (req, res) => {
+    const deleteQuery = "DELETE FROM test_table WHERE name=?";
+    let data = [req.query.name]
+    db.query(deleteQuery, data, 
+        (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 
 const listener = app.listen(process.env.PORT || 3000, () => {
     console.log('App is listening on port ' + listener.address().port)
